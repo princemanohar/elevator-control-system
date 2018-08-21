@@ -51,8 +51,8 @@ class LiftController():
                                 allotted = True
                                 break
 
-            print("Controller Sleeping for 10 secs")
-            time.sleep(10)
+            print("Controller Sleeping for 5 secs")
+            time.sleep(5)
 
 
 class Lift():
@@ -133,30 +133,45 @@ class FloorPanel():
         self.lift_controller.floors_calls_down.add(self.floor_no)
 
 
-max_floors = 10
+def take_int_value_input(msg):
+    while True:
+        try:
+            intval = int(input(msg))
+            return intval
+        except:
+            print("Invalid entry. Please enter an integer...\nRetrying...")
+
+
+
+max_floors = take_int_value_input("Enter the maximum number of Floors : ")
+
+# Initialising the Lift Controller
 lift_controller = LiftController(max_floors)
-
-lift1 = Lift(lift_controller, 1)
-lift_controller.register_lift(lift1)
-
-#lift2 = Lift(lift_controller, 2)
-#lift_controller.register_lift(lift2)
-
+# Initialising Floor Panels
 floor_panels = []
-for fl in range(1,max_floors+1):
+for fl in range(1, max_floors+1):
     fp = FloorPanel(fl, lift_controller)
     floor_panels.append(fp)
 
+no_of_lifts = take_int_value_input("Enter Number of Lifts : ")
+
+# Initilialsing {{no_of_lifts}} lifts
+for i in range(0, no_of_lifts):
+    lift_i = Lift(lift_controller, 1)
+    lift_controller.register_lift(lift_i)
+
+# Starting the scheduler in LiftController that should keep checking if any Lift needs to be sent to any floor.
 lift_controller_thread = Thread(target=lift_controller.check_periodically)
 lift_controller_thread.daemon = True
 lift_controller_thread.start()
 
+# Sample Inputs to get the code started.
+'''
 floor_panels[0].press_up()
 floor_panels[9].press_down()
 floor_panels[5].press_up()
 floor_panels[7].press_down()
-
-sk=9
+'''
 
 while True:
     floorN = input("Enter Floor Number: ")
