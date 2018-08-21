@@ -16,3 +16,12 @@ The main entities in this are:-
 - Execute command: `python elevator.py`
 The above command starts the program.
 
+**Sample Input**
+```
+Enter the maximum number of Floors : 15
+Enter Number of Lifts : 2
+Enter Floor Number: 5
+Choose Direction (U or D): D
+Enter Floor Number: 6
+Choose Direction (U or D): U
+```
