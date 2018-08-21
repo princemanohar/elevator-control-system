@@ -1,4 +1,4 @@
-# elevator-control-system
+# The Elevator Control System
 ## Description:
 This project has the implementation of an Elevator Control System.
 The main entities in this are:-
@@ -8,4 +8,11 @@ The main entities in this are:-
 
 3. **The Lift Controller**: Acts as a central control system that takes IO from the **Floor Panels** and signals the Lifts about the floor towards which they should go. The Lift Controller also contains references to all the lifts, thereby, access their states, in order to instruct a specific Lift.
 
+## Build and Run Instructions:
+### Requirements:-
+- Python (3+ version)
+
+### Steps:-
+- Execute command: `python elevator.py`
+The above command starts the program.
 
