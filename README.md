@@ -6,6 +6,7 @@
 
 ### Steps:-
 - Execute command: `python elevator.py`
+
 The above command starts the program.
 
 **Sample Input**
